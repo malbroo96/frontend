@@ -1,48 +1,34 @@
+import resume from "../assets/Akhil_Joseph_Resume.pdf";
+
 export default function Hero() {
   async function handleClick(e) {
     e && e.preventDefault && e.preventDefault();
-    const resumeUrl = "/resume.pdf";
-    const driveFallback =
-      "https://drive.google.com/file/d/13MGZlOCJZMbAXoIMkxqIH9yU5K3SN0Tc/view?usp=sharing";
     try {
-      const res = await fetch(resumeUrl);
+      const res = await fetch(resume);
       if (!res.ok) throw new Error("resume not found");
       const blob = await res.blob();
       const blobUrl = URL.createObjectURL(blob);
 
-      const newWin = window.open("", "_blank");
+      // Try to open the PDF blob in a new tab for preview
+      const newWin = window.open(blobUrl, "_blank");
+
+      // Also trigger an automatic download by creating and clicking a hidden anchor
+      const a = document.createElement("a");
+      a.href = blobUrl;
+      a.download = "Akhil_Joseph_Resume.pdf";
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+
+      // If popup is blocked, open the blob in the current tab as a fallback
       if (!newWin) {
-        // popup blocked: fallback to initiating download in current window
-        const a = document.createElement("a");
-        a.href = blobUrl;
-        a.download = "resume.pdf";
-        document.body.appendChild(a);
-        a.click();
-        a.remove();
-        URL.revokeObjectURL(blobUrl);
-        return;
+        window.location.href = blobUrl;
       }
 
-      newWin.document.write(
-        "<html><head><title>Downloading resume...</title></head><body></body></html>"
-      );
-      const a = newWin.document.createElement("a");
-      a.href = blobUrl;
-      a.download = "resume.pdf";
-      a.style.display = "none";
-      newWin.document.body.appendChild(a);
-      a.click();
-      newWin.document.body.insertAdjacentHTML(
-        "beforeend",
-        '<p style="font-family: Arial, sans-serif;">If the download does not start automatically, <a href="' +
-          resumeUrl +
-          '" target="_blank">click here</a>.</p>'
-      );
-      // revoke after a short delay to ensure download started
+      // Revoke the blob URL shortly after to free memory
       setTimeout(() => URL.revokeObjectURL(blobUrl), 2000);
     } catch (err) {
-      // fallback: open the original Drive link in a new tab
-      window.open(driveFallback, "_blank");
+      alert("Resume is currently unavailable. Please try again later.");
     }
   }
   return (
