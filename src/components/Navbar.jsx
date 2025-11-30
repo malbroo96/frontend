@@ -1,4 +1,4 @@
-import propic from '../assets/propic.JPG';
+import propic from "../assets/propic.JPG";
 
 export default function Navbar() {
   return (
@@ -13,9 +13,15 @@ export default function Navbar() {
           <h1 className="text-xl font-bold text-white">Akhil Joseph</h1>
         </div>
         <div className="flex gap-6">
-          <a href="#projects" className="hover:text-blue-400">Projects</a>
-          <a href="#skills" className="hover:text-blue-400">Skills</a>
-          <a href="#contact" className="hover:text-blue-400">Contact</a>
+          <a href="#projects" className="hover:text-blue-400">
+            Projects
+          </a>
+          <a href="#skills" className="hover:text-blue-400">
+            Skills
+          </a>
+          <a href="#contact" className="hover:text-blue-400">
+            Contact
+          </a>
         </div>
       </div>
     </nav>
