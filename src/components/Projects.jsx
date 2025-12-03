@@ -26,6 +26,7 @@ const Projects = () => {
         "• Real-time food analysis and smart suggestions.",
         "• Secure JWT login with weekly automated activity reports.",
       ],
+      link: "https://habit-flow-new.vercel.app/",
     },
     {
       name: "Loan Manager",
@@ -38,6 +39,7 @@ const Projects = () => {
         "• Secure document upload & verification workflow.",
         "• Dynamic progress bar for application tracking.",
       ],
+      link: "https://masai-react-five.vercel.app/dashboard",
     },
     {
       name: "FinanceApp",
@@ -51,6 +53,7 @@ const Projects = () => {
         "• Demat & mutual fund investment links.",
         "• Google Pay digital gold purchase support.",
       ],
+      link: "https://delightful-sprinkles-8e91a9.netlify.app/index.html",
     },
     {
       name: "ToDo CRUD",
@@ -64,6 +67,7 @@ const Projects = () => {
         "• Tested for error-handling & API flow.",
         "• Improved comfort with Vite + Tailwind stack.",
       ],
+      link: "https://todo-snowy-pi-91.vercel.app/",
     },
     {
       name: "Casava Bites",
@@ -76,6 +80,7 @@ const Projects = () => {
         "• Fully responsive layout.",
         "• Hosted on Netlify for fast access.",
       ],
+      link: "https://prismatic-babka-eab231.netlify.app/",
     },
   ];
 
@@ -101,11 +106,21 @@ const Projects = () => {
                   {project.title}
                 </h3>
                 <p className="text-sm text-gray-400 mb-3">{project.tech}</p>
-                <ul className="text-gray-300 space-y-1 text-sm">
+                <ul className="text-gray-300 space-y-1 text-sm mb-4">
                   {project.description.map((desc, i) => (
                     <li key={i}>{desc}</li>
                   ))}
                 </ul>
+                {project.link && (
+                  <a
+                    href={project.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-block px-4 py-2 bg-blue-600 text-white text-sm rounded-lg hover:bg-blue-700 transition"
+                  >
+                    View Project →
+                  </a>
+                )}
               </div>
             ))}
           </div>
