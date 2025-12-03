@@ -29,19 +29,6 @@ const Projects = () => {
       link: "https://habit-flow-new.vercel.app/",
     },
     {
-      name: "Loan Manager",
-      title: "Loan Application Manager",
-      tech: "React, Firebase / Backend APIs",
-      badge: { text: "Loan Manager", color: "bg-green-600" },
-      description: [
-        "• Real-time loan status with progress tracking.",
-        "• Multi-step form to collect user details.",
-        "• Secure document upload & verification workflow.",
-        "• Dynamic progress bar for application tracking.",
-      ],
-      link: "https://masai-react-five.vercel.app/dashboard",
-    },
-    {
       name: "FinanceApp",
       title: "Smart Money Manager",
       tech: "React, JS, API Integration, Charts",
